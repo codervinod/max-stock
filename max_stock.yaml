@@ -1,0 +1,64 @@
+swagger: '2.0'
+info:
+  title: Max Stock API
+  version: "1.0.0"
+schemes:
+  - http
+basePath: /v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  max_gain_response:
+    properties:
+      buy_date:
+        type: string
+      sell_date:
+        type: string
+      gain_percent:
+        type: integer
+      gain_absolute:
+        type: integer
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields_:
+        type: string
+paths:
+  /max_gain:
+    get:
+      summary: |
+        Get Dates in given range for which max gain could have been reached
+      description: |
+        This uses max sub array Divide and Concur algorithm as explained in CLR
+        to get dates on which maximum gain could have been achieved
+      parameters:
+        - name: ticker
+          in: path
+          description: ticker symbol of stock to evaluate like 'NTNX'
+          required: true
+          type: string
+        - name: start_date
+          in: path
+          required: true
+          description: start date period from which stock should be evaluated
+          type: string
+        - name: end_date
+          in: path
+          required: true
+          description: end date period till which stock should be evaluated
+          type: string
+      responses:
+        200:
+          description: access token
+          schema:
+            $ref: '#/definitions/max_gain_response'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
