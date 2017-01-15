@@ -38,7 +38,7 @@ paths:
         This uses max sub array Divide and Concur algorithm as explained in CLR
         to get dates on which maximum gain could have been achieved
       parameters:
-        - name: ticker
+        - name: ticker_symbol
           in: path
           description: ticker symbol of stock to evaluate like 'NTNX'
           required: true
