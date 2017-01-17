@@ -14,8 +14,12 @@ definitions:
     properties:
       buy_date:
         type: string
+      buy_price:
+        type: integer
       sell_date:
         type: string
+      sell_price:
+        type: integer
       gain_percent:
         type: integer
       gain_absolute:

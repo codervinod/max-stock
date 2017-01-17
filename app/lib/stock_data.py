@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from yahoo_finance import Share
 
 

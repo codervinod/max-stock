@@ -10,7 +10,7 @@
 ###
 
 
-DefinitionsMax_gain_response = {'properties': {'gain_percent': {'type': 'integer'}, 'buy_date': {'type': 'string'}, 'sell_date': {'type': 'string'}, 'gain_absolute': {'type': 'integer'}}}
+DefinitionsMax_gain_response = {'properties': {'sell_price': {'type': 'integer'}, 'buy_date': {'type': 'string'}, 'gain_absolute': {'type': 'integer'}, 'gain_percent': {'type': 'integer'}, 'sell_date': {'type': 'string'}, 'buy_price': {'type': 'integer'}}}
 DefinitionsError = {'properties': {'message': {'type': 'string'}, 'code': {'type': 'integer', 'format': 'int32'}, 'fields_': {'type': 'string'}}}
 
 validators = {

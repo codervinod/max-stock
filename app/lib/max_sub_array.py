@@ -1,11 +1,15 @@
+# -*- coding: utf-8 -*-
+
 from sys import maxint
 
 
 class MaxSubArray(object):
-  def find_max_sub_array(self, data_list):
-    return self._find_max_sub_array(data_list, 0, len(data_list) - 1)
+  @staticmethod
+  def find_max_sub_array(data_list):
+    return MaxSubArray._find_max_sub_array(data_list, 0, len(data_list) - 1)
 
-  def _find_max_sub_array_local(self, data_list, low, high, index):
+  @staticmethod
+  def _find_max_crossing(data_list, low, high, index):
     sum = 0
     left_low = index
     left_sum_max = -maxint - 1
@@ -26,17 +30,18 @@ class MaxSubArray(object):
 
     return left_low, right_high, left_sum_max + right_sum_max
 
-  def _find_max_sub_array(self, data_list, low, high):
+  @staticmethod
+  def _find_max_sub_array(data_list, low, high):
     if low == high:
       return low, low, data_list[low]
 
     mid = (low + high) / 2
 
-    local_low, local_high, local_max = self._find_max_sub_array_local(
+    local_low, local_high, local_max = MaxSubArray._find_max_crossing(
       data_list, low, high, mid)
-    low_left, high_left, max_left = self._find_max_sub_array(
+    low_left, high_left, max_left = MaxSubArray._find_max_sub_array(
       data_list, low, mid)
-    low_right, high_right, max_right = self._find_max_sub_array(
+    low_right, high_right, max_right = MaxSubArray._find_max_sub_array(
       data_list, mid + 1, high)
 
     if local_max >= max_left and local_max >= max_right:
